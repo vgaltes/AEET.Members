@@ -53,12 +53,14 @@ namespace AEET.Members.App
 
             var joined = UsersMembersJoiner.Join(users, members);
 
-            using (var writer = new StreamWriter("file.csv"))
+            using (var writer = new StreamWriter($"sociosAEET_{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.csv"))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(joined.UsersMembers);
             }
-            
+
+            Console.WriteLine("Pulse cualquier tecla para terminar.");
+            Console.ReadKey();            
         }
     }
 }
