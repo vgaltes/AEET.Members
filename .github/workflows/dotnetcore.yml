@@ -29,7 +29,7 @@ jobs:
         zip -r AEETMembers.zip publish
     - name: Get version
       id: get_version
-      run: echo "::set-output name=version::$(cat VERSION)"
+      run: echo "::set-output name=version::$(cat version)"
     - name: Create Release
       id: create_release
       uses: actions/create-release@latest
