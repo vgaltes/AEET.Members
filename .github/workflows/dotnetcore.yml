@@ -27,14 +27,17 @@ jobs:
     - name: Create Release Artifact
       run: |
         zip -r AEETMembers.zip publish
+    - name: Get version
+      id: get_version
+      run: echo "::set-output name=version::$(cat VERSION)"
     - name: Create Release
       id: create_release
       uses: actions/create-release@latest
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: Release v${{ steps.get_version.outputs.version }}
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
