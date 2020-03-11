@@ -19,3 +19,9 @@ jobs:
         dotnet-version: 3.1.101
     - name: Build with dotnet
       run: dotnet build --configuration Release
+    - name: Unit test with dotnet
+      run: dotnet test
+    - name: dotnet publish
+      run: |
+        dotnet publish -c Release -o aeetmembers
+  
