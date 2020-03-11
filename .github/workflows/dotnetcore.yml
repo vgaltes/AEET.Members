@@ -26,7 +26,7 @@ jobs:
         dotnet publish AEET.Members.App\\AEET.Members.App.csproj -c Release -o publish --runtime win10-x64
     - name: Create Release Artifact
       run: |
-        zip -r AEETMembers.zip publish
+        zip -r -j AEETMembers.zip publish
     - name: Get version
       id: get_version
       run: echo "::set-output name=version::$(cat version)"
